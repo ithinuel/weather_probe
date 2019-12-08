@@ -1,0 +1,27 @@
+{
+    "config": {
+        "dht_type": {
+            "help": "Type of DHT sensor used.",
+            "value": "DHT22"
+        },
+        "dht_pin": {
+            "help": "Pin used for the DHT sensor signal.",
+            "value": "D2"
+        },
+        "hts_addr": {
+            "help": "Address to the hts component if present.",
+            "value": null
+        }
+    },
+    "target_overrides": {
+        "*": {
+            "target.default-lib": "small"
+        },
+        "DISCO_L475VG_IOT01A": {
+            "app.hts_addr": 190
+        },
+        "NUCLEO_F401RE": {
+            "app.dht_type": "DHT11"
+        }
+    }
+}
