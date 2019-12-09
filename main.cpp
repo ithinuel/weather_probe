@@ -35,14 +35,18 @@ int main() {
     DHT<MBED_CONF_APP_DHT_TYPE> dht(MBED_CONF_APP_DHT_PIN);
 
     while(1) {
-        //float temperature = 0., humidity = 0.;
-        //hts.read(temperature, humidity);
+#ifdef MBED_CONF_APP_HTS_ADDR
+        float temperature = 0., humidity = 0.;
+        hts.read(temperature, humidity);
+#endif
         float dht_temp = 0., dht_hum = 0.;
-        
         int res = dht.read(dht_temp, dht_hum);
         
-        //printf("HTS: %.2fc %.2f%%\tDHT: %d %.2fc %.2f%%\n", temperature, humidity, res, dht_temp, dht_hum);
+#ifdef MBED_CONF_APP_HTS_ADDR
+        printf("HTS: %.2fc %.2f%%\tDHT: %d %.2fc %.2f%%\n", temperature, humidity, res, dht_temp, dht_hum);
+#else
         printf("DHT: %d %.2fc %.2f%%\n", res, dht_temp, dht_hum);
+#endif
         ThisThread::sleep_for(2000);
     }
 }

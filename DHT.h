@@ -60,7 +60,7 @@ public:
 
         uint32_t end = start + 250;
         do {
-            if (us_ticker_read() > 250) {
+            if (us_ticker_read() > end) {
                 return ERROR_BUS_BUSY;
             }
         } while (!io);
@@ -95,7 +95,7 @@ public:
         uint8_t data[5];
         {
             uint8_t *ptr = data;
-            for (uint32_t i = 2; i < DHT_TIME_SAMPLE_COUNT; ) {
+            for (i = 2; i < DHT_TIME_SAMPLE_COUNT; ) {
                 for (uint32_t j = 0; j < 8; j++, i++) {
                     *ptr <<= 1;
                     int32_t diff = bitTimes[i] - bitTimes[i-1];

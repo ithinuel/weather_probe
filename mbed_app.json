@@ -21,7 +21,8 @@
             "app.hts_addr": 190
         },
         "NUCLEO_F401RE": {
-            "app.dht_type": "DHT11"
+            "app.dht_type": "DHT11",
+            "app.dht_pin": "D14"
         }
     }
 }
